@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIMAFORMAS UNDIP - Kabinet Merajut Karsa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            /* BACKGROUND CSS MURNI TEAL BLUR & GLASSMORPHISM PREMIUM */
+            background: radial-gradient(circle at 30% 20%, #0D9488 0%, transparent 45%),
+                        radial-gradient(circle at 70% 80%, #0F766E 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, #115E59 0%, #134E4A 100%);
+            background-color: #134E4A;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Lingkaran blur besar bertumpuk yang lembut mendukung efek kedalaman */
+        .bg-glow-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.22;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .circle-1 {
+            width: 450px;
+            height: 450px;
+            background-color: #0D9488;
+            top: -10%;
+            left: -10%;
+        }
+        .circle-2 {
+            width: 500px;
+            height: 500px;
+            background-color: #164E63;
+            bottom: -15%;
+            right: -10%;
+        }
+        .circle-3 {
+            width: 350px;
+            height: 350px;
+            background-color: #0F766E;
+            top: 40%;
+            left: 60%;
+        }
+
+        /* Container Utama Kartu Kedai */
+        .card-container {
+            background-color: #0b5a60; 
+            width: 100%;
+            max-width: 440px;
+            border-radius: 45px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 15px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            border: 10px solid #ffffff;
+            position: relative;
+            padding-top: 35px;
+            padding-bottom: 35px;
+            animation: floatCard 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Hiasan Bulatan Kuning */
+        .yellow-dot {
+            position: absolute;
+            top: 35px;
+            width: 18px;
+            height: 18px;
+            background-color: #fcd34d;
+            border-radius: 50%;
+            border: 2px solid #064e54;
+            box-shadow: 0 0 10px #fcd34d;
+            animation: pulseGlow 2s infinite alternate;
+        }
+        .dot-left { left: 25px; }
+        .dot-right { right: 25px; }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 4px #fcd34d; transform: scale(0.9); }
+            100% { box-shadow: 0 0 12px #fcd34d; transform: scale(1.1); }
+        }
+
+        /* Header Text Area */
+        .header-section {
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .welcome-badge {
+            background: linear-gradient(to bottom, #ffe066, #f59e0b);
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 26px;
+            padding: 8px 45px;
+            border-radius: 16px;
+            display: inline-block;
+            border: 3px solid #ffffff;
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+            text-shadow: 2px 2px 0px #d97706;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .sub-title-1 {
+            color: #fef08a;
+            font-weight: 800;
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+        }
+
+        .sub-title-2 {
+            background-color: #7dd3fc;
+            color: #0b5a60;
+            font-weight: 800;
+            font-size: 13px;
+            padding: 6px 22px;
+            border-radius: 20px;
+            display: inline-block;
+            text-transform: uppercase;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Tenda Kedai / Awning */
+        .awning-container {
+            position: relative;
+            display: flex;
+            width: 100%;
+            height: 75px;
+            margin-top: 15px;
+            z-index: 10;
+            padding: 0 5px;
+        }
+
+        .awning-stripe {
+            flex: 1;
+            height: 55px;
+            border-bottom-left-radius: 50% 25px;
+            border-bottom-right-radius: 50% 25px;
+            box-shadow: 0 8px 10px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .awning-stripe:nth-child(odd) { background-color: #064e54; }
+        .awning-stripe:nth-child(even) { background-color: #fef08a; }
+
+        /* Area Putih Menu Utama */
+        .main-content {
+            background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%);
+            margin: -20px 22px 22px 22px;
+            padding: 35px 22px 28px 22px;
+            border-radius: 35px;
+            box-shadow: inset 0 5px 12px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        /* Tombol Tautan Menu */
+        .menu-link {
+            background: linear-gradient(to right, #bae6fd, #7dd3fc);
+            color: #78350f;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-radius: 25px;
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1), inset 0 -4px 0 rgba(14, 116, 144, 0.2);
+            transition: all 0.25s ease-in-out;
+            border: 2.5px solid #ffffff;
+        }
+
+        .menu-link:hover {
+            transform: translateX(4px) scale(1.01);
+            box-shadow: -3px 6px 12px rgba(11, 90, 96, 0.2), inset 0 -4px 0 rgba(14, 116, 144, 0.2);
+            background: linear-gradient(to right, #fffbeb, #bae6fd);
+            color: #0b5a60;
+        }
+
+        .menu-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* WADAH DAN BENTUK ANIMASI PENITI MURNI (PURE CSS SAFETY PIN) */
+        .pin-wrapper {
+            position: relative;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            animation: continuousSafetyPinBounce 1.6s ease-in-out infinite alternate;
+        }
+
+        /* Variasi jeda animasi per poin agar tidak kaku */
+        .menu-link:nth-child(1) .pin-wrapper { animation-delay: 0s; }
+        .menu-link:nth-child(2) .pin-wrapper { animation-delay: 0.35s; }
+        .menu-link:nth-child(3) .pin-wrapper { animation-delay: 0.7s; }
+
+        .safety-pin-css {
+            width: 14px;
+            height: 22px;
+            border: 3px solid #0284c7;
+            border-radius: 10px 10px 8px 8px;
+            position: relative;
+            transform: rotate(-25deg);
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
+        }
+
+        /* Bagian Kepala Peniti */
+        .safety-pin-css::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -3.5px;
+            width: 15px;
+            height: 8px;
+            background-color: #0369a1;
+            border-radius: 4px;
+            border: 1px solid #ffffff;
+        }
+
+        /* Jarum/Celah Dalam Peniti */
+        .safety-pin-css::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            right: 0px;
+            width: 3px;
+            height: 10px;
+            background-color: #0284c7;
+            border-radius: 2px;
+        }
+
+        @keyframes continuousSafetyPinBounce {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translateY(-5px) rotate(-15deg) scale(1.15);
+            }
+            100% {
+                transform: translateY(-8px) rotate(12deg) scale(1.2);
+            }
+        }
+
+        .platform-icon {
+            font-size: 18px;
+            color: #0b5a60;
+            opacity: 0.85;
+        }
+
+        /* Footer Grid Media Sosial */
+        .social-footer {
+            padding: 0 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .social-btn {
+            background: linear-gradient(to bottom, #38bdf8, #0284c7);
+            color: white;
+            text-decoration: none;
+            flex: 1;
+            padding: 12px 8px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0 5px 8px rgba(0,0,0,0.15), inset 0 -3px 0 rgba(0,0,0,0.15);
+            transition: all 0.2s;
+            border: 1.5px solid rgba(255,255,255,0.25);
+            text-transform: lowercase;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+            filter: brightness(1.1);
+        }
+
+        .social-btn i {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Lingkaran dekoratif blur CSS untuk efek bertumpuk -->
+    <div class="bg-glow-circle circle-1"></div>
+    <div class="bg-glow-circle circle-2"></div>
+    <div class="bg-glow-circle circle-3"></div>
+
+    <div class="card-container">
+        
+        <!-- Bulatan Hiasan Atas -->
+        <div class="yellow-dot dot-left"></div>
+        <div class="yellow-dot dot-right"></div>
+
+        <!-- Header -->
+        <div class="header-section">
+            <div class="welcome-badge">WELCOME</div>
+            <div class="sub-title-1">Kabinet Merajut Karsa</div>
+            <div class="sub-title-2">Himaformas Undip</div>
+        </div>
+
+        <!-- Tenda Kedai -->
+        <div class="awning-container">
+            <div class="awning-stripe"></div>
+            <div class="awning-stripe"></div>
+            <div class="awning-stripe"></div>
+            <div class="awning-stripe"></div>
+            <div class="awning-stripe"></div>
+            <div class="awning-stripe"></div>
+            <div class="awning-stripe"></div>
+            <div class="awning-stripe"></div>
+        </div>
+
+        <!-- Konten Utama Papan Menu -->
+        <div class="main-content">
+            <a href="https://bit.ly/KabinetMerajutKarsa" target="_blank" class="menu-link">
+                <div class="menu-left">
+                    <div class="pin-wrapper">
+                        <div class="safety-pin-css"></div>
+                    </div>
+                    <span>GDO MERAJUT KARSA</span>
+                </div>
+                <i class="fa-solid fa-link platform-icon"></i>
+            </a>
+
+            <a href="https://bit.ly/GDOGDBMerajutKarsa" target="_blank" class="menu-link">
+                <div class="menu-left">
+                    <div class="pin-wrapper">
+                        <div class="safety-pin-css"></div>
+                    </div>
+                    <span>GDO GDB GDD</span>
+                </div>
+                <i class="fa-solid fa-link platform-icon"></i>
+            </a>
+
+            <a href="https://wa.me/6281261721840?text=Halo!%20Saya%20ingin%20mengajukan%20kerja%20sama%20bersama%20HIMAFORMAS." target="_blank" class="menu-link">
+                <div class="menu-left">
+                    <div class="pin-wrapper">
+                        <div class="safety-pin-css"></div>
+                    </div>
+                    <span>Contact Person & Media Partner</span>
+                </div>
+                <i class="fa-brands fa-whatsapp platform-icon" style="color: #25D366; font-size: 20px;"></i>
+            </a>
+        </div>
+
+        <!-- Grid Tautan Sosial Media Bawah Aktif -->
+        <div class="social-footer">
+            <div class="social-row">
+                <a href="https://tiktok.com/@himaformas.undip" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-tiktok"></i> tiktok
+                </a>
+                <a href="https://www.instagram.com/himaformas.undip?igsh=MWNvNHJwOWNlaGZsdw%3D%3D&utm_source=qr" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-instagram"></i> instagram
+                </a>
+                <a href="https://www.youtube.com/@himaformasundip" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-youtube"></i> youtube
+                </a>
+            </div>
+            
+            <div class="social-row">
+                <a href="https://www.linkedin.com/company/himaformas/?originalSubdomain=id" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-linkedin"></i> linkedin
+                </a>
+                <a href="mailto:himaformas.undip@gmail.com" class="social-btn">
+                    <i class="fa-solid fa-envelope"></i> email
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
